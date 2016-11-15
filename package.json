@@ -1,0 +1,28 @@
+{
+  "name": "webhooks-pgsql",
+  "version": "1.0.0",
+  "description": "heroku deployed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LizzieLaShark/webhooks-pgsql.git"
+  },
+  "author": "LizzieLaShark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LizzieLaShark/webhooks-pgsql/issues"
+  },
+  "homepage": "https://github.com/LizzieLaShark/webhooks-pgsql#readme",
+  "devDependencies": {
+    "dotenv": "^2.0.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "pg": "^6.1.0"
+  }
+}
