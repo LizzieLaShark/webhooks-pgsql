@@ -28,7 +28,7 @@ module.exports = {
   production: {
     client: 'pg',
     connection: {
-      database: 'postgresql-graceful-53310',
+      database: 'process.env.DATABASE_URL',
       user:     'username',
       password: 'password'
     },
