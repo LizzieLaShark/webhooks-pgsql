@@ -5,14 +5,14 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'testdbwebhooks'
+      database: 'webhooks'
     }
   },
 
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'webhooks',
       user:     'username',
       password: 'password'
     },
