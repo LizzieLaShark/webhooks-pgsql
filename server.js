@@ -8,7 +8,7 @@ var port = process.env.PORT || 5000
 
 
 app.post("/event", function(req, res) {
-  var NBdata = res.body;
+  var NBdata = req.body;
 
   console.log(NBdata);
 
