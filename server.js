@@ -8,9 +8,9 @@ var port = process.env.PORT || 5000
 
 
 app.post("/event", function(req, res) {
-  var events = req.body.events;
+  var NBdata = res.body;
 
-  console.log(events);
+  console.log(NBdata);
 
   // Respond with a success code
   res.send(200);
