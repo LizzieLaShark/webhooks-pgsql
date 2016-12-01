@@ -1,5 +1,6 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTableIfNotExists('nationbuilderTestData', function(table) {
+  return knex.schema.createTableIfNotExists('nationbuildertestdata', function(table) {
+    console.log('createdTable')
 
     table.integer('id')
     table.string('first_name')
@@ -13,5 +14,6 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('nationbuilderTestData')
+  console.log('droppedTable')
+  return knex.schema.dropTableIfExists('nationbuildertestdata')
 };
