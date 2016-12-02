@@ -17,7 +17,10 @@ app.post("/event", function(req, res) {
 
   console.log(payload)
 
-  knex('nationbuildertestdata').insert({first_name: payload.first_name, email: payload.email})
+  knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
+  .then(function(data){
+
+})
 
 
   // Respond with a success code
