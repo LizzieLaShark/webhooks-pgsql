@@ -7,7 +7,7 @@ var knex = require('knex')({client: 'pg'})
 var port = process.env.PORT || 5000
 
 
-app.post("/event", function(req, res) {
+app.get("/event", function(req, res) {
   var NBdata = res.payload
 
   console.log(NBdata)
