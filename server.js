@@ -12,12 +12,10 @@ var port = process.env.PORT || 5000
 
 
 app.post("/event", function(req, res) {
-  var NBdata = res.payload
 
-  console.log('NBdata: ', NBdata)
-  console.log('testing logs!')
-  console.log('testing res.body!', res.body)
-  console.log('testing req.body!', req.body)
+  console.log('req.body: ', req.body)
+  console.log('payload: ', req.body.payload)
+
 
   // Respond with a success code
   res.send('testing res.send here')
