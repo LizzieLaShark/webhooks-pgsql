@@ -8,7 +8,7 @@ var port = process.env.PORT || 5000
 
 
 app.post("/event", function(req, res) {
-  var NBdata = JSON.parse(res.body)
+  var NBdata = res.payload
 
   console.log('NBdata: ', NBdata)
   console.log('testing logs!')
@@ -16,7 +16,7 @@ app.post("/event", function(req, res) {
   console.log('testing req.body!', req.body)
 
   // Respond with a success code
-  res.send()
+  res.send('testing res.send here!')
   res.sendStatus(status)
 })
 
