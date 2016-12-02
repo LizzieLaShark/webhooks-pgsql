@@ -7,29 +7,20 @@ var knex = require('knex')({client: 'pg'})
 var port = process.env.PORT || 5000
 
 
-app.get("/event", function(req, res) {
-  var NBdata = res.payload
+app.post("/event", function(req, res) {
+  var NBdata = JSON.parse(res.body)
 
-  console.log(NBdata)
+  console.log('NBdata: ', NBdata)
   console.log('testing logs!')
   console.log('testing res.body!', res.body)
   console.log('testing req.body!', req.body)
 
   // Respond with a success code
+  res.send()
   res.sendStatus(status)
 })
 
-app.post("/", function(req, res) {
-  var NBdata1 = res.payload
 
-  console.log("testing / ", NBdata1)
-  console.log('testing logs!')
-  console.log('testing res.body!', res.body)
-  console.log('testing req.body!', req.body)
-
-  // Respond with a success code
-  res.sendStatus(status)
-})
 
 //try .payload and .person and maybe .payload.person or .payload[person]
 
