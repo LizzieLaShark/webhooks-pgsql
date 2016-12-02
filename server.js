@@ -8,12 +8,12 @@ var port = process.env.PORT || 5000
 
 
 app.post("/event", function(req, res) {
-  var NBdata = res.person;
+  var NBdata = res.payload;
 
   console.log(NBdata);
 
   // Respond with a success code
-  res.send(status);
+  res.send(200);
 });
 
 //try .payload and .person and maybe .payload.person or .payload[person]
