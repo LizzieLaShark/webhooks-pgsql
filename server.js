@@ -17,7 +17,7 @@ app.post("/event", function(req, res) {
 
   console.log(payload)
 
-  knex('nationbuildertestdata').insert({req.body.payload})
+  knex('nationbuildertestdata').insert({'req.body.payload'})
 
 
   // Respond with a success code
