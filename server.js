@@ -19,6 +19,18 @@ app.get("/event", function(req, res) {
   res.sendStatus(status)
 })
 
+app.post("/", function(req, res) {
+  var NBdata = res.payload
+
+  console.log("testing / ",NBdata1)
+  console.log('testing logs!')
+  console.log('testing res.body!', res.body)
+  console.log('testing req.body!', req.body)
+
+  // Respond with a success code
+  res.sendStatus(status)
+})
+
 //try .payload and .person and maybe .payload.person or .payload[person]
 
 
