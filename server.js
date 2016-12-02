@@ -20,9 +20,9 @@ app.get("/event", function(req, res) {
 })
 
 app.post("/", function(req, res) {
-  var NBdata = res.payload
+  var NBdata1 = res.payload
 
-  console.log("testing / ",NBdata1)
+  console.log("testing / ", NBdata1)
   console.log('testing logs!')
   console.log('testing res.body!', res.body)
   console.log('testing req.body!', req.body)
