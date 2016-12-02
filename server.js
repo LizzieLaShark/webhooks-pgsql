@@ -17,12 +17,12 @@ app.post("/event", function(req, res) {
 
   console.log(payload)
 
-  knex('nationbuildertestdata').insert({payload})
+  knex('nationbuildertestdata').insert({req.body.payload})
 
 
   // Respond with a success code
-  res.send('testing res.send here')
-  res.sendStatus(status)
+  // res.send('testing res.send here')
+  // res.sendStatus(status)
 })
 
 
