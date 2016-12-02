@@ -3,6 +3,10 @@ var app = express()
 var dotenv = require ('dotenv')
 var pg = require('pg')
 var knex = require('knex')({client: 'pg'})
+var bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 var port = process.env.PORT || 5000
 
@@ -16,7 +20,7 @@ app.post("/event", function(req, res) {
   console.log('testing req.body!', req.body)
 
   // Respond with a success code
-  res.send('testing res.send here!')
+  res.send('testing res.send here')
   res.sendStatus(status)
 })
 
