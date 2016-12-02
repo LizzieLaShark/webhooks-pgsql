@@ -19,7 +19,7 @@ app.post("/event", function(req, res) {
 
   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
   .then(function(data){
-
+    res.send('testing res.send here')
 })
 
 
