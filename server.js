@@ -13,19 +13,17 @@ var port = process.env.PORT || 5000
 
 app.post("/event", function(req, res) {
 
-  console.log('req.body: ', req.body)
-  console.log('payload: ', req.body.payload)
+  payload = req.body.payload
+
+  console.log(payload)
+
+  knex('nationbuildertestdata').insert({payload})
 
 
   // Respond with a success code
   res.send('testing res.send here')
   res.sendStatus(status)
 })
-
-
-
-//try .payload and .person and maybe .payload.person or .payload[person]
-
 
 
 
