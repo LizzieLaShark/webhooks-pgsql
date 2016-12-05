@@ -9,13 +9,18 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 var port = process.env.PORT || 5000
+var knexConfig = require('./knexfile')
+var env = process.env.NODE_ENV || 'development'
+//var knex = Knex(knexConfig[env])
 
+console.log(process.env)
 
 app.post("/event", function(req, res) {
 
   payload = req.body.payload
 
   console.log(payload)
+  console.log('testing payload var: ', payload.first_name)
 
   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
   .then(function(data){
@@ -27,6 +32,15 @@ app.post("/event", function(req, res) {
   // res.send('testing res.send here')
   // res.sendStatus(status)
 })
+
+var testKnex = function() {
+  knex('nationbuildertestdata').insert({first_name: 'hello1', email: 'thedeathofemail@hotmail.com'})
+  .then(function(data){
+    console.log("meaningless log message.")
+  })
+}
+
+testKnex()
 
 
 
