@@ -6,6 +6,7 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'webhooks'
+      ssl: true
     }
   },
 
@@ -13,6 +14,7 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'webhooks',
+      ssl: true,
       user:     'username',
       password: 'password'
     },
@@ -30,7 +32,8 @@ module.exports = {
     connection: {
       database: 'process.env.DATABASE_URL',
       user:     'username',
-      password: 'password'
+      password: 'password',
+      ssl: true
     },
     pool: {
       min: 2,
