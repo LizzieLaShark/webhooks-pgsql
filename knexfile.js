@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'webhooks'
+      database: 'webhooks',
       ssl: true
     }
   },
