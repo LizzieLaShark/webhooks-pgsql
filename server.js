@@ -7,9 +7,9 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-var config = require('./knexfile.js');
+var knexconfig = require('./knexfile.js');
 //var env = 'development';
-var knex = require('knex')(config[env]);
+//var knex = require('knex')(config[env]);
 
 var port = process.env.PORT || 5000
 var env = process.env.NODE_ENV || 'development'
