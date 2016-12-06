@@ -2,18 +2,33 @@ var express = require('express')
 var app = express()
 var dotenv = require ('dotenv')
 var pg = require('pg')
-var knex = require('knex')({client: 'pg'})
+//var knex = require('knex')({client: 'pg'})
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 var port = process.env.PORT || 5000
-var knexConfig = require('./knexfile')
+//var knexConfig = require('./knexfile')
 var env = process.env.NODE_ENV || 'development'
 //var knex = Knex(knexConfig[env])
 
-console.log(process.env)
+pg.defaults.ssl = true;
+
+// pg.connect(process.env.DATABASE_URL, function(err, client) {
+//   if (err) throw err;
+//   console.log('Connected to postgres! Getting schemas...');
+// });
+
+var knex = require('knex')({
+  client: 'pg',
+  connection: process.env.DATABASE_URL || {
+    database: 'twitter_clone_dev'
+  },
+  useNullAsDefault: true
+})
+
+console.log(process.env.DATABASE_URL)
 
 app.post("/event", function(req, res) {
 
@@ -41,6 +56,7 @@ var testKnex = function() {
 }
 
 testKnex()
+
 
 
 
