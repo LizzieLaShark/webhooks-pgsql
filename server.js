@@ -13,9 +13,17 @@ var knexconfig = require('./knexfile.js');
 
 var port = process.env.PORT || 5000
 var env = process.env.NODE_ENV || 'development'
+socket = process.env.PORT
 
+//var connectionString = "postgres://dgxssvqjvwkrto:xDEl398dlARfdVAkOegZcwI1mD@ec2-54-243-207-190.compute-1.amazonaws.com:5432/d7vjen7acmospg"
 
 //pg.defaults.ssl = true;
+
+// pg.connect(connectionString, function(err, client, done) {
+//    knex.select().table('nationbuildertestdata')
+//  })
+
+
 
 app.post("/event", function(req, res) {
 
