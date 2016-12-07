@@ -27,10 +27,10 @@ module.exports = {
     }
   },
 
-  production: {
+  production: process.env.DATABASE_URL || {
     client: 'pg',
     connection: {
-      database: 'process.env.DATABASE_URL',
+      database: 'my_db',
       user:     'username',
       password: 'password',
       ssl: true
