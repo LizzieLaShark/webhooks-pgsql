@@ -3,15 +3,16 @@
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: 'postgres',
     connection: {
       database: 'webhooks',
       ssl: true
-    }
+    },
+     useNullAsDefault: true
   },
 
   staging: {
-    client: 'pg',
+    client: 'postgres',
     connection: {
       database: 'webhooks',
       ssl: true,
@@ -28,7 +29,7 @@ module.exports = {
   },
 
   production: process.env.DATABASE_URL || {
-    client: 'pg',
+    client: 'postgres',
     connection: {
       database: 'my_db',
       user:     'username',

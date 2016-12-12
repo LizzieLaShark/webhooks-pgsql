@@ -1,67 +1,136 @@
-
 var express = require('express')
 var app = express()
-var pg = require('pg')
-var knex = require('knex')({client: 'pg'})
+var https = require('https')
+var pg = require('pg').native
+//var knex = require('knex')({client: 'pg'})
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
+var Knex = require('knex')
+var knexConfig = require('./knexfile.js')
+var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
+
 var port = process.env.PORT || 5000
-var config = require('./knexfile.js');
-
-
-
-
-//DATABASE_URL = postgres://dgxssvqjvwkrto:xDEl398dlARfdVAkOegZcwI1mD@ec2-54-243-207-190.compute-1.amazonaws.com:5432/d7vjen7acmospg
-
-
-//var env = 'development';
-// var knex = require('knex')(config[env]);
-
-//var env = process.env.NODE_ENV || 'development'
-
 
 //pg.defaults.ssl = true;
 
-app.post("/event", function(req, res) {
+console.log("hi!")
 
-  payload = req.body.payload
+function all() {
+ return knex.select().table('nationbuildertestdata') 
+}
 
-  console.log(payload)
-  console.log('testing payload var: ', payload.first_name)
-
-  knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
-  .then(function(data){
-    res.send('testing res.send here')
-})
-
-
-  // Respond with a success code
-  // res.send('testing res.send here')
-  // res.sendStatus(status)
-})
-
+// app.post("/event", function(req, res) {
+//
+//   payload = req.body.payload
+//
+//   console.log(payload)
+//   console.log('testing payload var: ', payload.first_name)
+//
+//   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
+//   .then(function(data){
+//     res.send('testing res.send here')
+// })
+//
+//
+//   // Respond with a success code
+//   // res.send('testing res.send here')
+//   // res.sendStatus(status)
+// })
+//
 var testKnex = function() {
-  knex('nationbuildertestdata').insert({first_name: 'hello1', email: 'thedeathofemail@hotmail.com'})
+  knex('nationbuildertestdata').insert({first_name: 'kia ora', email: 'brickwallsandheads@frustrationstation.com'})
   .then(function(data){
     console.log("meaningless log message.")
   })
 }
 
- testKnex()
-
-
-
+testKnex()
 
 
 
 
 app.get('/', function (req, res) {
-  res.send('BKK G lyf!')
+  res.send('hai')
 })
 
 app.listen(port)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var express = require('express')
+// var app = express()
+// var pg = require('pg')
+// var knex = require('knex')({client: 'pg'})
+// var bodyParser = require('body-parser')
+//
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: false }))
+// var port = process.env.PORT || 5000
+// var config = require('./knexfile.js');
+//
+//
+//
+//
+// //DATABASE_URL = postgres://dgxssvqjvwkrto:xDEl398dlARfdVAkOegZcwI1mD@ec2-54-243-207-190.compute-1.amazonaws.com:5432/d7vjen7acmospg
+//
+//
+// //var env = 'development';
+// // var knex = require('knex')(config[env]);
+//
+// //var env = process.env.NODE_ENV || 'development'
+//
+//
+// //pg.defaults.ssl = true;
+//
+// app.post("/event", function(req, res) {
+//
+//   payload = req.body.payload
+//
+//   console.log(payload)
+//   console.log('testing payload var: ', payload.first_name)
+//
+//   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
+//   .then(function(data){
+//     res.send('testing res.send here')
+// })
+//
+//
+//   // Respond with a success code
+//   // res.send('testing res.send here')
+//   // res.sendStatus(status)
+// })
+//
+// var testKnex = function() {
+//   knex('nationbuildertestdata').insert({first_name: 'hello1', email: 'thedeathofemail@hotmail.com'})
+//   .then(function(data){
+//     console.log("meaningless log message.")
+//   })
+// }
+//
+//  testKnex()
+
+
+// app.get('/', function (req, res) {
+//   res.send('BKK G lyf!')
+// })
+//
+// app.listen(port)
 
 
 
