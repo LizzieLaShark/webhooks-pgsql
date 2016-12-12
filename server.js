@@ -1,9 +1,10 @@
 var express = require('express')
 var app = express()
 var https = require('https')
-var pg = require('pg').native
+var pg = require('pg')
 //var knex = require('knex')({client: 'pg'})
 var bodyParser = require('body-parser')
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -14,7 +15,6 @@ var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 
 var port = process.env.PORT || 5000
 
-//pg.defaults.ssl = true;
 
 console.log("hi!")
 

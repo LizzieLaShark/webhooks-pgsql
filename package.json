@@ -26,6 +26,8 @@
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
     "knex": "*",
     "pg": "*",
     "ssl-root-cas": "^1.2.3"

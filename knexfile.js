@@ -6,7 +6,6 @@ module.exports = {
     client: 'postgres',
     connection: {
       database: 'webhooks',
-      ssl: true
     },
      useNullAsDefault: true
   },
@@ -15,7 +14,6 @@ module.exports = {
     client: 'postgres',
     connection: {
       database: 'webhooks',
-      ssl: true,
       user:     'username',
       password: 'password'
     },
@@ -34,7 +32,6 @@ module.exports = {
       database: 'my_db',
       user:     'username',
       password: 'password',
-      ssl: true
     },
     pool: {
       min: 2,
