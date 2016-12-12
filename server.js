@@ -22,7 +22,7 @@ function all() {
  return knex.select().table('nationbuildertestdata')
 }
 
-app.post("/event", function(req, res) {
+app.post("/test", function(req, res) {
 
   payload = req.body.payload
 
@@ -40,10 +40,13 @@ app.post("/event", function(req, res) {
   res.sendStatus(status)
 })
 
+
+
+
 var testKnex = function() {
-  knex('nationbuildertestdata').insert({first_name: 'kia ora', email: 'brickwallsandheads@frustrationstation.com'})
-  .then(function(data){
-    console.log("meaningless log message.")
+  knex('nationbuildertestdata').insert({first_name: 'hello', email: 'brickwallsandheads@frustrationstation.com'})
+  .then(function(data, err){
+    console.log("data entered")
   })
 }
 
