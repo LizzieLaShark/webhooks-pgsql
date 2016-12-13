@@ -24,7 +24,7 @@ app.post("/test", function(req, res) {
   // console.log('testing payload var: ', payload.first_name)
   console.log("hitting line 25")
 
-  console.log(req.body.payload.first_name)
+  console.log(req.body)
 
   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
   .then(function(data){
