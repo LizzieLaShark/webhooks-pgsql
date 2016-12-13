@@ -16,27 +16,20 @@ var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 var port = process.env.PORT || 5000
 
 
-console.log("hi!")
-
-
 app.post("/test", function(req, res) {
 
   // payload = req.body.payload
   //
   // console.log(payload)
   // console.log('testing payload var: ', payload.first_name)
+  console.log("hitting line 25")
 
   console.log(req.body.payload.first_name)
 
   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
   .then(function(data){
-    res.send('testing res.send here')
-})
-
-
-  // Respond with a success code
-  res.send('testing res.send here')
-  res.sendStatus(status)
+    console.log('hitting last line of the function')
+  })
 })
 
 
