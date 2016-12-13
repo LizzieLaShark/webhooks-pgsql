@@ -18,16 +18,15 @@ var port = process.env.PORT || 5000
 
 console.log("hi!")
 
-function all() {
- return knex.select().table('nationbuildertestdata')
-}
 
 app.post("/test", function(req, res) {
 
-  payload = req.body.payload
+  // payload = req.body.payload
+  //
+  // console.log(payload)
+  // console.log('testing payload var: ', payload.first_name)
 
-  console.log(payload)
-  console.log('testing payload var: ', payload.first_name)
+  console.log(req.body.payload.first_name)
 
   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
   .then(function(data){
@@ -50,7 +49,7 @@ var testKnex = function() {
   })
 }
 
-testKnex()
+//testKnex()
 
 
 
