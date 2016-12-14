@@ -19,11 +19,10 @@ var port = process.env.PORT || 5000
 app.post("/test", function(req, res) {
 
   payload = req.body.payload
-  console.log("hitting line 25")
 
-  console.log("req.body: ", req.body)
+  //console.log("req.body: ", req.body)
   console.log("payload: ", payload)
-  console.log("req.body.payload.person.first_name",req.body.payload.person.first_name)
+  console.log("payload.first_name",req.body.payload.person.first_name)
 
 
   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
