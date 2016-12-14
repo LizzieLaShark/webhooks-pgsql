@@ -26,7 +26,7 @@ app.post("/test", function(req, res) {
 
   console.log("req.body: ", req.body)
   console.log("req.body.nation_slug",req.body.nation_slug)
-  console.log("req.body.person",req.body.person)
+  console.log("req.body.payload.person",req.body.payload.person)
 
 
   knex('nationbuildertestdata').insert({first_name: req.body.payload.first_name, email: req.body.payload.email})
