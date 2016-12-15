@@ -5,7 +5,6 @@ var pg = require('pg')
 //var knex = require('knex')({client: 'pg'})
 var bodyParser = require('body-parser')
 
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -15,6 +14,20 @@ var Knex = knex(knexConfig[process.env.NODE_ENV] || 'development')
 
 
 var port = process.env.PORT || 5000
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM nationbuildertestdata', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
+
+
 
 
 app.post("/test", function(req, res) {
