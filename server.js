@@ -9,7 +9,7 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-var knex = require('knex')
+var knex = require('knex')({client: 'pg'})
 var knexConfig = require('./knexfile.js')
 var Knex = knex(knexConfig[process.env.NODE_ENV] || 'development')
 
