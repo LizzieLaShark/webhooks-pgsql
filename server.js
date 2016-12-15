@@ -15,12 +15,11 @@ var Knex = knex(knexConfig[process.env.NODE_ENV] || 'development')
 
 
 var port = process.env.PORT || 5000
-payload = req.body.payload
 
 
 app.post("/test", function(req, res) {
 
-  //payload = req.body.payload
+  payload = req.body.payload
 
   //console.log("req.body: ", req.body)
   //console.log("payload: ", payload)
