@@ -21,8 +21,6 @@ app.post("/test", function(req, res) {
 
   payload = req.body.payload
 
-  //console.log("req.body: ", req.body)
-  //console.log("payload: ", payload)
   console.log("payload.first_name",req.body.payload.person.first_name)
 
 
