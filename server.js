@@ -9,16 +9,18 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-var Knex = require('knex')
+var knex = require('knex')
 var knexConfig = require('./knexfile.js')
-var knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
+var Knex = knex(knexConfig[process.env.NODE_ENV] || 'development')
+
 
 var port = process.env.PORT || 5000
+payload = req.body.payload
 
 
 app.post("/test", function(req, res) {
 
-  payload = req.body.payload
+  //payload = req.body.payload
 
   //console.log("req.body: ", req.body)
   //console.log("payload: ", payload)
@@ -26,20 +28,24 @@ app.post("/test", function(req, res) {
 
 
   knex('nationbuildertestdata').insert({first_name: payload.first_name, email: payload.email})
-  .then(function(data){
+  .then(function(data, err){
+    if(err){
+      console.log('error message: ', err)
+    } else {
     console.log('hitting last line of the function')
+    }
   })
 })
 
 
 
 
-var testKnex = function() {
-  knex('nationbuildertestdata').insert({first_name: 'hello', email: 'brickwallsandheads@frustrationstation.com'})
-  .then(function(data, err){
-    console.log("data entered")
-  })
-}
+// var testKnex = function() {
+//   knex('nationbuildertestdata').insert({first_name: 'hello', email: 'brickwallsandheads@frustrationstation.com'})
+//   .then(function(data, err){
+//     console.log("data entered")
+//   })
+// }
 
 //testKnex()
 
