@@ -48,6 +48,38 @@ app.post("/test", function(req, res) {
 })
 
 
+app.post("/createPerson", function(req, res) {
+
+  payload = req.body.payload
+
+  console.log("payload.first_name",req.body.payload.person.first_name)
+
+
+  knex('nationbuildertestdata').insert({payload.person})
+  .then(function(data, err){
+    if(err){
+      console.log('error message: ', err)
+    } else {
+    console.log('success')
+    }
+  })
+})
+
+
+app.post("/updatePerson", function(req, res) {
+
+  payload = req.body.payload
+
+  knex('nationbuildertestdata').where(payload.person.id === 'id').insert({payload.person})
+  .then(function(data, err){
+    if(err){
+      console.log('error message: ', err)
+    } else {
+    console.log('success')
+    }
+  })
+})
+
 
 
 // var testKnex = function() {
