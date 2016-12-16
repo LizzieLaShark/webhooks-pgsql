@@ -18,14 +18,14 @@ var port = process.env.PORT || 5000
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM nationbuildertestdata', function(err, result) {
-      done();
+      done()
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
        { response.render('pages/db', {results: result.rows} ); }
-    });
-  });
-});
+    })
+  })
+})
 
 
 
@@ -48,37 +48,34 @@ app.post("/test", function(req, res) {
 })
 
 
-app.post("/createPerson", function(req, res) {
-
-  payload = req.body.payload
-
-  console.log("payload.first_name",req.body.payload.person.first_name)
-
-
-  knex('nationbuildertestdata').insert({payload.person})
-  .then(function(data, err){
-    if(err){
-      console.log('error message: ', err)
-    } else {
-    console.log('success')
-    }
-  })
-})
-
-
-app.post("/updatePerson", function(req, res) {
-
-  payload = req.body.payload
-
-  knex('nationbuildertestdata').where(payload.person.id === 'id').insert({payload.person})
-  .then(function(data, err){
-    if(err){
-      console.log('error message: ', err)
-    } else {
-    console.log('success')
-    }
-  })
-})
+// app.post("/createPerson", function(req, res) {
+//
+//   payload = req.body.payload
+//
+//   knex('nationbuildertestdata').insert({payload.person})
+//   .then(function(data, err){
+//     if(err){
+//       console.log('error message: ', err)
+//     } else {
+//     console.log('success')
+//     }
+//   })
+// })
+//
+//
+// app.post("/updatePerson", function(req, res) {
+//
+//   payload = req.body.payload
+//
+//   knex('nationbuildertestdata').where(payload.person.id === 'id').insert({payload.person})
+//   .then(function(data, err){
+//     if(err){
+//       console.log('error message: ', err)
+//     } else {
+//     console.log('success')
+//     }
+//   })
+// })
 
 
 
