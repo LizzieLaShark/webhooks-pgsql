@@ -1,60 +1,39 @@
 var express = require('express')
 var app = express()
-//var pg = require('pg')
-//var knex = require('knex')({client: 'pg'})
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// var knex = require('knex')({client: 'pg'})
-// var knexConfig = require('./knexfile.js')
-// var Knex = knex(knexConfig[process.env.NODE_ENV] || 'development')
-
-var env = process.env.NODE_ENV || 'development' // string
-var knexConfig = require('./knexfile.js') //big object
+var env = process.env.NODE_ENV || 'development'
+var knexConfig = require('./knexfile.js')
 var knexGenerator = require('knex')
-var knexDbConfig = knexConfig[env] //small object
+var knexDbConfig = knexConfig[env]
 global.knex = knexGenerator(knexDbConfig)
 
 var port = process.env.PORT || 8080
 
-// app.get('/db', function (request, response) {
-//   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-//     client.query('SELECT * FROM nationbuildertestdata', function(err, result) {
-//       done()
-//       if (err)
-//        { console.error(err); response.send("Error " + err); }
-//       else
-//        { response.render('pages/db', {results: result.rows} ); }
-//     })
-//   })
-// })
+
+app.post("/test", function(req, res) {
+
+  payload = req.body.payload.person
+  console.log("payload.first_name", payload.first_name)
 
 
-
-
-// app.post("/test", function(req, res) {
-//
-//   payload = req.body.payload
-//
-//   console.log("payload.first_name",req.body.payload.person.first_name)
-//
-//
-//   knex('nationbuildertestdata').insert({first_name: payload.first_name, email: payload.email})
-//   .then(function(data, err){
-//     if(err){
-//       console.log('error message: ', err)
-//     } else {
-//     console.log('hitting last line of the function')
-//     }
-//   })
-// })
+  knex('nationbuildertestdata').insert({payload})
+  .then(function(data, err){
+    if(err){
+      console.log('error message: ', err)
+    } else {
+    console.log('check data is entered')
+    }
+  })
+})
 
 
 // app.post("/createPerson", function(req, res) {
 //
-//   payload = req.body.payload
+//   payload = req.body.payload.person
 //
 //   knex('nationbuildertestdata').insert({payload.person})
 //   .then(function(data, err){
@@ -90,7 +69,7 @@ var testKnex = function() {
   })
 }
 
-testKnex()
+//testKnex()
 
 
 
@@ -255,3 +234,16 @@ app.listen(port)
 // })
 //
 // app.listen(port)
+
+
+// app.get('/db', function (request, response) {
+//   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+//     client.query('SELECT * FROM nationbuildertestdata', function(err, result) {
+//       done()
+//       if (err)
+//        { console.error(err); response.send("Error " + err); }
+//       else
+//        { response.render('pages/db', {results: result.rows} ); }
+//     })
+//   })
+// })
