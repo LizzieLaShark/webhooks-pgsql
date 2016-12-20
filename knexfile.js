@@ -3,19 +3,17 @@
 module.exports = {
 
   development: {
-    client: 'postgres',
+    client: 'pg',
     connection: {
       database: 'webhooks',
     },
-     useNullAsDefault: true
-  },
 
   staging: {
-    client: 'postgres',
+    client: 'pg',
     connection: {
-      database: 'webhooks',
-      user:     'username',
-      password: 'password'
+      database: 'webhooks'
+      // user:     'username',
+      // password: 'password'
     },
     pool: {
       min: 2,
@@ -27,7 +25,7 @@ module.exports = {
   },
 
   production: process.env.DATABASE_URL || {
-    client: 'postgres',
+    client: 'pg',
     connection: {
       database: 'my_db',
       user:     'username',
@@ -41,5 +39,5 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
+}
 };
