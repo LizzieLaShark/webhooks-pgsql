@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
     table.string('employer')
     table.string('facebook_username')
 
+
   })
 };
 
