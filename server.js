@@ -1,12 +1,11 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
-const knex = require('knex')('development')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-var env = process.env.NODE_ENV || 'development'
+var env = process.env.NODE_ENV || 'production'
 var knexConfig = require('./knexfile.js')
 var knexGenerator = require('knex')
 var knexDbConfig = knexConfig[env]
