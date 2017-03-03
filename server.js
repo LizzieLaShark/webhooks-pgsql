@@ -16,7 +16,13 @@ global.knex = knexGenerator(knexDbConfig)
 
 var port = process.env.PORT || 8080
 
-var client = new Client(process.env.DATABASE_URL)
+var pg = require('pg');
+
+// pg.defaults.ssl = true;
+// pg.connect(process.env.DATABASE_URL, function(err, client) {
+//   if (err) throw err;
+//   console.log('Connected to postgres! Getting schemas...');
+// });
 
 // app.use(logger('dev'));
 // app.use(cookieParser());
