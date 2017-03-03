@@ -1,9 +1,9 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+// var path = require('path');
+// var logger = require('morgan');
+// var cookieParser = require('cookie-parser');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -16,8 +16,8 @@ global.knex = knexGenerator(knexDbConfig)
 
 var port = process.env.PORT || 8080
 
-app.use(logger('dev'));
-app.use(cookieParser());
+// app.use(logger('dev'));
+// app.use(cookieParser());
 
 
 app.post("/test", function(req, res) {
