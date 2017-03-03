@@ -16,6 +16,8 @@ global.knex = knexGenerator(knexDbConfig)
 
 var port = process.env.PORT || 8080
 
+var client = new Client(process.env.DATABASE_URL)
+
 // app.use(logger('dev'));
 // app.use(cookieParser());
 
