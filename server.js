@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-var env = process.env.NODE_ENV || 'production'
+var env = process.env.NODE_ENV || 'development'
 var knexConfig = require('./knexfile.js')
 var knexGenerator = require('knex')
 var knexDbConfig = knexConfig[env]
