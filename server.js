@@ -13,6 +13,20 @@ global.knex = knexGenerator(knexDbConfig)
 
 var port = process.env.PORT || 8080
 
+app.post("/updatePerson", function(req, res) {
+
+  payload = req.body.payload.person
+
+  knex('nationbuildertestdata').where({id: payload.id}).update({updated_at: payload.updated_at, first_name: payload.first_name, last_name: payload.last_name, email: payload.email})
+  .then(function(data, err){
+    if(err){
+      console.log('error message: ', err)
+    } else {
+    console.log('Congratulations! Person Updated from Nationbuilder to SQL')
+    }
+  })
+})
+
 
 app.post("/createPerson", function(req, res) {
 
