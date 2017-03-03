@@ -1,6 +1,7 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
+const knex = require('knex')('development')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
