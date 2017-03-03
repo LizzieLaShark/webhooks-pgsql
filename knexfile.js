@@ -27,7 +27,7 @@ module.exports = {
   production: process.env.DATABASE_URL || {
     client: 'pg',
     connection: {
-      database: 'webhooks',
+      database: 'postgresql-graceful-53310',
       // user:     'username',
       // password: 'password',
     },
