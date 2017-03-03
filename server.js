@@ -28,20 +28,20 @@ app.post("/updatePerson", function(req, res) {
 })
 
 
-app.post("/createPerson", function(req, res) {
-
-  payload = req.body.payload.person
-  console.log("payload", payload)
-
-  knex('contacts').insert({contact_id: payload.id, contact_name: payload.first_name, email: payload.email, created_at: payload.created_at})
-  .then(function(data, err){
-    if(err){
-      console.log('error message: ', err)
-    } else {
-    console.log('check data is entered')
-    }
-  })
-})
+// app.post("/createPerson", function(req, res) {
+//
+//   payload = req.body.payload.person
+//   console.log("payload", payload)
+//
+//   knex('contacts').insert({contact_id: payload.id, contact_name: payload.first_name, email: payload.email, created_at: payload.created_at})
+//   .then(function(data, err){
+//     if(err){
+//       console.log('error message: ', err)
+//     } else {
+//     console.log('check data is entered')
+//     }
+//   })
+// })
 
 
 app.post("/test", function(req, res) {
