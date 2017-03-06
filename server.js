@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 var env = process.env.NODE_ENV || 'development'
 var knexConfig = require('./knexfile.js')
-var knexGenerator = require('knex')
+var knexGenerator = require('knex')('production')
 var knexDbConfig = knexConfig[env]
 global.knex = knexGenerator(knexDbConfig)
 
@@ -78,12 +78,12 @@ app.post("/deletePerson", function(req, res) {
   })
 })
 
-var testKnex = function() {
-  knex('nationbuildertestdata').insert({first_name: 'ngrok', email: 'ngroknpmpackage@email.com'})
-  .then(function(data, err){
-    console.log("data entered")
-  })
-}
+// var testKnex = function() {
+//   knex('nationbuildertestdata').insert({first_name: 'clientBug', email: 'bugg101@email.com'})
+//   .then(function(data, err){
+//     console.log("data entered")
+//   })
+// }
 
 //testKnex()
 

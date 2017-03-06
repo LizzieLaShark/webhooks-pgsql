@@ -26,9 +26,9 @@ module.exports = {
   },
 
   production: {
-    client: 'heroku-postgresql',
+    client: 'pg',
     connection: 'postgres://dgxssvqjvwkrto:xDEl398dlARfdVAkOegZcwI1mD@ec2-54-243-207-190.compute-1.amazonaws.com:5432/d7vjen7acmospg',
-    // {
+    //{
     //   database: 'my_db',
     //   user:     'username',
     //   password: 'password',
@@ -41,6 +41,5 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-};
 
-console.log(module.exports.production.connection)
+};
