@@ -16,7 +16,7 @@ global.knex = knexGenerator(knexDbConfig)
 
 var port = process.env.PORT || 8080
 
-var pg = require('pg');
+//var pg = require('pg');
 
 // pg.defaults.ssl = true;
 // pg.connect(process.env.DATABASE_URL, function(err, client) {
@@ -27,44 +27,31 @@ var pg = require('pg');
 // app.use(logger('dev'));
 // app.use(cookieParser());
 
+payload = req.body.payload.person
 
-app.post("/test", function(req, res) {
+////*** Add New Contact ***\\\
 
-  payload = req.body.payload.person
-  //console.log("payload", payload)
+app.post('/addContact', function(req, res) {
 
-
-  knex('nationbuildertestdata').insert({id: payload.id ,first_name: payload.first_name, email: payload.email, created_at: payload.created_at})
-  .then(function(data, err){
-    if(err){
-      console.log('error message: ', err)
-    } else {
-    console.log('check data is entered')
-    }
-  })
+  knex('contacts').insert({contact_id: payload.id, contact_name: payload.first_name && payload.last_name, email: payload.email, created_at: payload.created_at})
+    .then(function(data, err){
+      if(err){
+        console.log('error message: ', err)
+      } else {
+      console.log('check data is entered')
+        }
+    })
 })
 
-app.post("/updatePerson", function(req, res) {
+////**** Update Person ****\\\\
 
-  payload = req.body.payload.person
-  console.log(payload.email)
 
-  knex('nationbuildertestdata').where({id: payload.id}).update({updated_at: payload.updated_at, first_name: payload.first_name, last_name: payload.last_name, email: payload.email})
-  .then(function(data, err){
-    if(err){
-      console.log('error message: ', err)
-    } else {
-    console.log('Congratulations! Person Updated from Nationbuilder to SQL')
-    }
-  })
-})
+
+////**** Delete Contact From Database ****\\\\
 
 app.post("/deletePerson", function(req, res) {
 
-  payload = req.body.payload.person
-  console.log(payload)
-
-  knex('nationbuildertestdata').where({id: payload.id}).del()
+  knex('contacts').where({contact_id: payload.id}).del()
   .then(function(data, err){
     if(err){
       console.log('error message: ', err)
@@ -76,16 +63,33 @@ app.post("/deletePerson", function(req, res) {
 
 
 
-var testKnex = function() {
-  knex('nationbuildertestdata').insert({first_name: 'ngrok', email: 'ngroknpmpackage@email.com'})
-  .then(function(data, err){
-    console.log("data entered")
+//////add person contacts table\\\\\
+
+knex('contacts').insert({contact_id: payload.id, contact_name: payload.first_name && payload.last_name, email: payload.email, created_at: payload.created_at})
+.then(function(data, err){
+  if(err){
+    console.log('error message: ', err)
+  } else {
+  console.log('check data is entered')
+    }
   })
-}
-
-//testKnex()
 
 
+
+
+const testNew = function() {
+
+  knex('contacts').insert({contact_id: '1233', contact_name: 'firstnamehere' && 'lastnamehere', email: 'bla@bla.com', created_at: '2017/12/12'})
+  .then(function(data, err){
+    if(err){
+      console.log('error message: ', err)
+    } else {
+    console.log('check data is entered')
+      }
+    })
+  }
+
+//testNew()
 
 
 app.get('/', function (req, res) {
