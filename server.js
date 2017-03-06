@@ -7,15 +7,15 @@ var dotenv = require('dotenv')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-var env = process.env.NODE_ENV || 'production'
-var knexConfig = require('./knexfile.js')
-var knexGenerator = require('knex')('production')
-var knexDbConfig = knexConfig[env]
-global.knex = knexGenerator(knexDbConfig)
+// var env = process.env.NODE_ENV || 'production'
+// var knexConfig = require('./knexfile.js')
+// var knexGenerator = require('knex')('production')
+// var knexDbConfig = knexConfig[env]
+// global.knex = knexGenerator(knexDbConfig)
 
 
-console.log(process.env.DATABASE_URL)
-console.log('client', knexConfig.production.client)
+//console.log(process.env.DATABASE_URL)
+//console.log('client', knexConfig.production.client)
 
 var pg = require('pg');
 
