@@ -6,7 +6,8 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'webhooks',
-    },
+    }
+  },
 
   staging: {
     client: 'pg',
@@ -26,7 +27,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL, {
+    connection: {
       database: 'my_db',
       user:     'username',
       password: 'password',
@@ -39,5 +40,6 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-}
 };
+
+console.log(module.exports.production.connection)
