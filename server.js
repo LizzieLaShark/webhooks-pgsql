@@ -4,28 +4,30 @@ var bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
+var env = process.env.NODE_ENV || 'development'
+var knexConfig = require('./knexfile.js')
+var knexGenerator = require('knex')
+var knexDbConfig = knexConfig[env]
+global.knex = knexGenerator(knexDbConfig)
+
+console.log('connection', knexConfig.production.connection)
+console.log('client', knexConfig.production.client)
+
+// var pg = require('pg');
 //
-// var env = process.env.NODE_ENV || 'development'
-// var knexConfig = require('./knexfile.js')
-// var knexGenerator = require('knex')
-// var knexDbConfig = knexConfig[env]
-// global.knex = knexGenerator(knexDbConfig)
-
-
-var pg = require('pg');
-
-pg.defaults.ssl = true;
-
-pg.connect('postgres://dgxssvqjvwkrto:xDEl398dlARfdVAkOegZcwI1mD@ec2-54-243-207-190.compute-1.amazonaws.com:5432/d7vjen7acmospg', function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
-
-  client
-    .query('SELECT table_schema,table_name FROM information_schema.tables;')
-    .on('row', function(row) {
-      console.log(JSON.stringify(row));
-    });
-});
+// pg.defaults.ssl = true;
+//
+// pg.connect('postgres://dgxssvqjvwkrto:xDEl398dlARfdVAkOegZcwI1mD@ec2-54-243-207-190.compute-1.amazonaws.com:5432/d7vjen7acmospg', function(err, client) {
+//   if (err) throw err;
+//   console.log('Connected to postgres! Getting schemas...');
+//
+//   client
+//     .query('SELECT table_schema,table_name FROM information_schema.tables;')
+//     .on('row', function(row) {
+//       //console.log(JSON.stringify(row));
+//     });
+// });
 
 
 
