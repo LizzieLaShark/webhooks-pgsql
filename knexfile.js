@@ -7,13 +7,14 @@ module.exports = {
     connection: {
       database: 'webhooks',
     },
+  },
 
   staging: {
     client: 'pg',
     connection: {
-      database: 'webhooks'
+      database: 'webhooks',
       // user:     'username',
-      // password: 'password'
+      // password: 'password',
     },
     pool: {
       min: 2,
@@ -27,7 +28,7 @@ module.exports = {
   production: process.env.DATABASE_URL || {
     client: 'pg',
     connection: {
-      database: 'my_db',
+      database: 'webhooks'
       // user:     'username',
       // password: 'password',
     },
@@ -39,5 +40,5 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-}
+
 };
