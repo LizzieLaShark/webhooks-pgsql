@@ -27,11 +27,12 @@ module.exports = {
 
   production: process.env.DATABASE_URL || {
     client: 'pg',
-    connection: {
-      database: 'webhooks'
-      // user:     'username',
-      // password: 'password',
-    },
+    connection: process.env.PG_CONNECTION_STRING,
+    // {
+    //   database: 'webhooks'
+    //   user:     'username',
+    //   password: 'password',
+    // },
     pool: {
       min: 2,
       max: 10
