@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 /////***** DB Connection Code (client bug still thrown even with this set up) *****\\\\\
 
-var env = process.env.NODE_ENV || 'development'
+var env = 'development'
 var knexConfig = require('./knexfile.js')
 var knexGenerator = require('knex')
 var knexDbConfig = knexConfig[env]
