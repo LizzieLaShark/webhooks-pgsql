@@ -6,13 +6,13 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'webhooks',
-    },
+    }
   },
 
   staging: {
     client: 'pg',
     connection: {
-      database: 'webhooks',
+      database: 'webhooks'
       // user:     'username',
       // password: 'password',
     },
