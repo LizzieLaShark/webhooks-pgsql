@@ -27,7 +27,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.PG_CONNECTION_STRING,
+    connection: 'dbname=d7vjen7acmospg host=ec2-54-243-207-190.compute-1.amazonaws.com port=5432 user=dgxssvqjvwkrto password=xDEl398dlARfdVAkOegZcwI1mD sslmode=require',
     //  {
     //   database: 'webhooks'
     //   // user:     'username',
