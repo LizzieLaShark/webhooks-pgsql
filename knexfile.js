@@ -27,8 +27,8 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: 'postgres://dgxssvqjvwkrto:xDEl398dlARfdVAkOegZcwI1mD@ec2-54-243-207-190.compute-1.amazonaws.com:5432/d7vjen7acmospg',
-    //  || {
+    connection: process.env.PG_CONNECTION_STRING,
+    //  {
     //   database: 'webhooks'
     //   // user:     'username',
     //   // password: 'password',
