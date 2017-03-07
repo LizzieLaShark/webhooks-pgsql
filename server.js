@@ -19,6 +19,7 @@ global.knex = knexGenerator(knexDbConfig)
 var port = process.env.PORT || 8080
 
 console.log(knexDbConfig)
+console.log(process.env.PG_CONNECTION_STRING)
 
 /////***** Alternative DB Connection Code *****\\\\\
 
